@@ -3,6 +3,7 @@ var pontos, idElementoSelecionado;
 var svg, poligonoSelecionado, poligonoSelecionadoSVG;
 var pontoSelecionado;
 var ferramantaSelecionada;
+var mousePressionado=false;
 
 window.onload = function () {
 	//Eventos elementos click
@@ -19,9 +20,34 @@ window.onload = function () {
 			criarPontoPoligono(x, y);
 		}else if (ferramantaSelecionada=="criarPonto") {
 			criarPonto(x, y);
-		}else if (ferramantaSelecionada=="criarPontoCurvaPoligono") {
-			criarPontoCurvaPoligono(x, y, evt);
 		}
+	}
+	document.getElementById('svgmain').onmousedown = function(evt){
+		var x = evt.clientX;
+		var y = evt.clientY - this.offsetTop;
+		if (ferramantaSelecionada=="criarPontoCurvaPoligono") {
+			criarPontoCurvaPoligono(x, y);
+		}else if(ferramantaSelecionada=="criarPontoCurva"){
+			criarPontoCurva(x, y, "mousedown");
+		}
+		mousePressionado = true;
+	}
+	document.getElementById('svgmain').onmousemove = function(evt){
+		if(mousePressionado){
+			var x = evt.clientX;
+			var y = evt.clientY - this.offsetTop;
+			if (ferramantaSelecionada=="criarPontoCurva") {
+				criarPontoCurva(x, y, "mouseup");
+			}
+		}
+	}
+	document.getElementById('svgmain').onmouseup = function(evt){
+		var x = evt.clientX;
+		var y = evt.clientY - this.offsetTop;
+		if (ferramantaSelecionada=="criarPontoCurva") {
+			criarPontoCurva(x, y, "mouseup");
+		}
+		mousePressionado=false;
 	}
 }
 
@@ -75,9 +101,8 @@ function criarPonto(x, y){
 }
 
 //Cria path e ponto com curva
-function criarPontoCurvaPoligono(x, y, evt){
-	console.log("asdasda");
-	var poligono = svg.path('M '+x+' '+y).fill('black').stroke({
+function criarPontoCurvaPoligono(x, y){
+	var poligono = svg.path('M '+x+' '+y).fill('none').stroke({
 		width: 1
 	});
 	poligono.node.id = 'poligono_' + ContPoligono;
@@ -85,7 +110,43 @@ function criarPontoCurvaPoligono(x, y, evt){
 	poligono.draggable();
 	poligonoSelecionadoSVG = poligono;
 	document.getElementById(poligono.node.id).addEventListener('click', mostrarPontosPoligono, false);
+	ferramantaSelecionada = "criarPontoCurva";
 	ContPoligono++;
+}
+
+//Adiciona ponto com curva de um path
+function criarPontoCurva(x, y, nomeEventoMouse){
+	var pontosPath = poligonoSelecionadoSVG.plot().value;
+
+	if(nomeEventoMouse=="mousedown"){
+		var pontoPathNovo = pontosPath.toString()+' Q '+x+' '+y+' '+x+' '+y;
+
+		poligonoSelecionadoSVG.plot(pontoPathNovo);
+		mostrarPontosPoligono();
+	}else if(nomeEventoMouse=="mouseup"){
+		var ultimoPontoPath = pontosPath[pontosPath.length-1].toString().split(',')
+		ultimoPontoPath[1] = x;
+		ultimoPontoPath[2] = y;
+		pontosPath[pontosPath.length-1] = ultimoPontoPath.join(',');
+		console.log(pontosPath.join(','));
+
+		// console.log(ultimoPontoPath.join(','));
+		poligonoSelecionadoSVG.plot(pontosPath.join(','));
+		
+		// var pontoPathNovo = pontosPath.toString()+' Q '+x+' '+y+' '+x+' '+y;
+
+		// poligonoSelecionadoSVG.plot(pontoPathNovo);
+		// mostrarPontosPoligono();
+	}
+
+	// for(var i=0; i<pontosPath.length-1;i++){
+	// 	pontosPath.splice();
+	// }
+	// console.log("depois de splice"+pontosPath.toString());
+	// pontoPathNovo += pontosPath.toString();
+	// console.log(pontoPathNovo);
+	// poligonoSelecionadoSVG.plot('M 10 10 Q 10 10 20 10');
+	
 }
 
 function mostrarPontosPoligono() {
@@ -123,7 +184,7 @@ function mostrarPontosPoligono() {
 				' </div> ';
 		}
 	}
-	mostrarPontoPoligonoNele(poligonoSelecionadoSVG.plot().value.length-1);
+	//mostrarPontoPoligonoNele(poligonoSelecionadoSVG.plot().value.length-1);
 }
 
 function mostrarPontoPoligonoNele(indicePonto) {
