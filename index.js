@@ -11,6 +11,7 @@ window.onload = function () {
 	document.getElementById('criarPontoPoligono').addEventListener("click", funcaoCriarPontoPoligono);
 	document.getElementById('criarPontoCurvaPoligono').addEventListener("click", funcaoCriarPontoCurvaPoligono);
 	document.getElementById('moverPoligono').addEventListener("click", funcaoMoverPoligono);
+	document.getElementById('selecionarPoligono').addEventListener("click", funcaoSelecionarPoligono);
 
 	svg = SVG('svgmain');
 	document.getElementById('svgmain').onclick = function(evt){
@@ -109,9 +110,19 @@ function criarPontoCurvaPoligono(x, y){
 	poligono.node.setAttributeNS(null, 'class', 'draggable');
 	poligono.draggable();
 	poligonoSelecionadoSVG = poligono;
-	document.getElementById(poligono.node.id).addEventListener('click', mostrarPontosPoligono, false);
+	
+	document.getElementById(poligono.node.id).addEventListener('click', funcaoSelecionarPoligono, false);
 	ferramantaSelecionada = "criarPontoCurva";
 	ContPoligono++;
+}
+//Selecionar poligono
+function funcaoSelecionarPoligono(){
+	poligonoSelecionado = this;
+	poligonoSelecionadoSVG = this;
+	console.log(poligonoSelecionado);
+	console.log(poligonoSelecionado);
+	ferramantaSelecionada = "";
+	mostrarPontosPoligono();
 }
 
 //Adiciona ponto com curva de um path
