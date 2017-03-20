@@ -4,7 +4,7 @@ var svg, poligonoSelecionado, poligonoSelecionadoSVG;
 var pontoSelecionado;
 var ferramantaSelecionada;
 var mousePressionado=false;
-
+var pegarPoligono;
 window.onload = function () {
 	//Eventos elementos click
 	document.getElementById('adicionarPoligono').addEventListener("click", adicionarPoligono);
@@ -12,7 +12,12 @@ window.onload = function () {
 	document.getElementById('criarPontoCurvaPoligono').addEventListener("click", funcaoCriarPontoCurvaPoligono);
 	document.getElementById('moverPoligono').addEventListener("click", funcaoMoverPoligono);
 	document.getElementById('selecionarPoligono').addEventListener("click", funcaoSelecionarPoligono);
-
+	//document.getElementById('botaoRed').addEventListener("click", pintar);
+	var coresSub = document.getElementsByClassName('coresSub');
+	for(var i=0;i<coresSub.length;i++){
+		coresSub[i].addEventListener("click", pintar);
+	};
+	
 	svg = SVG('svgmain');
 	document.getElementById('svgmain').onclick = function(evt){
 		var x = evt.clientX;
@@ -50,6 +55,10 @@ window.onload = function () {
 		}
 		mousePressionado=false;
 	}
+}
+
+function pintar(){
+	poligonoSelecionadoSVG.fill(this.style.backgroundColor);
 }
 
 function desmarcarPoligono(){
