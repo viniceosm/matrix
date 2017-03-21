@@ -7,7 +7,6 @@ var mousePressionado=false;
 var pegarPoligono;
 window.onload = function () {
 	//Eventos elementos click
-	document.getElementById('adicionarPoligono').addEventListener("click", adicionarPoligono);
 	document.getElementById('criarPontoPoligono').addEventListener("click", funcaoCriarPontoPoligono);
 	document.getElementById('criarPontoCurvaPoligono').addEventListener("click", funcaoCriarPontoCurvaPoligono);
 	document.getElementById('moverPoligono').addEventListener("click", funcaoMoverPoligono);
@@ -85,18 +84,6 @@ function funcaoCriarPontoCurvaPoligono(){
 	ferramantaSelecionada="criarPontoCurvaPoligono";
 }
 
-function adicionarPoligono() {
-	var poligono = svg.polygon('0,0 100,50 50,100').fill('black').stroke({
-		width: 1
-	}).x(150).y(150);
-	poligono.node.id = 'poligono_' + ContPoligono;
-	poligono.node.setAttributeNS(null, 'class', 'draggable');
-	poligono.draggable();
-	poligonoSelecionadoSVG = poligono;
-	document.getElementById(poligono.node.id).addEventListener('click', mostrarPontosPoligono, false);
-	ContPoligono++;
-}
-
 //Cria poligono e ponto
 function criarPontoPoligono(x, y) {
 	var poligono = svg.polygon(x+','+y).fill('none').stroke({
@@ -148,7 +135,6 @@ function funcaoSelecionarPoligono(){
 	poligonoSelecionado = this;
 	poligonoSelecionadoSVG = this;
 	console.log(poligonoSelecionado);
-	console.log(poligonoSelecionado);
 	ferramantaSelecionada = "";
 	mostrarPontosPoligono();
 }
@@ -169,25 +155,9 @@ function criarPontoCurva(x, y, nomeEventoMouse){
 		pontosPath[pontosPath.length-1] = ultimoPontoPath.join(',');
 		console.log(pontosPath.join(','));
 
-		// console.log(ultimoPontoPath.join(','));
 		poligonoSelecionadoSVG.plot(pontosPath.join(','));
-		
-		// var pontoPathNovo = pontosPath.toString()+' Q '+x+' '+y+' '+x+' '+y;
-
-		// poligonoSelecionadoSVG.plot(pontoPathNovo);
-		// mostrarPontosPoligono();
 	}
-
-	// for(var i=0; i<pontosPath.length-1;i++){
-	// 	pontosPath.splice();
-	// }
-	// console.log("depois de splice"+pontosPath.toString());
-	// pontoPathNovo += pontosPath.toString();
-	// console.log(pontoPathNovo);
-	// poligonoSelecionadoSVG.plot('M 10 10 Q 10 10 20 10');
-	
 }
-
 function mostrarPontosPoligono() {
 	if(this == window){
 		poligonoSelecionado = poligonoSelecionadoSVG.node;
@@ -223,7 +193,6 @@ function mostrarPontosPoligono() {
 				' </div> ';
 		}
 	}
-	//mostrarPontoPoligonoNele(poligonoSelecionadoSVG.plot().value.length-1);
 }
 
 function mostrarPontoPoligonoNele(indicePonto) {
