@@ -12,11 +12,16 @@ window.onload = function () {
 	document.getElementById('criarPontoCurvaPoligono').addEventListener("click", funcaoCriarPontoCurvaPoligono);
 	document.getElementById('moverPoligono').addEventListener("click", funcaoMoverPoligono);
 	document.getElementById('selecionarPoligono').addEventListener("click", funcaoSelecionarPoligono);
-	//document.getElementById('botaoRed').addEventListener("click", pintar);
 	var coresSub = document.getElementsByClassName('coresSub');
 	for(var i=0;i<coresSub.length;i++){
 		coresSub[i].addEventListener("click", pintar);
 	};
+	
+	document.addEventListener('click', function(e) {
+    e = e || window.event;
+    var target = e.target || e.srcElement,
+        poligonoSelecionadoSVG = target.getElementById;
+	}, false);
 	
 	svg = SVG('svgmain');
 	document.getElementById('svgmain').onclick = function(evt){
@@ -58,7 +63,9 @@ window.onload = function () {
 }
 
 function pintar(){
+	console.log(poligonoSelecionadoSVG);
 	poligonoSelecionadoSVG.fill(this.style.backgroundColor);
+	
 }
 
 function desmarcarPoligono(){
@@ -72,6 +79,7 @@ function funcaoCriarPontoPoligono(){
 function funcaoMoverPoligono(){
 	desmarcarPoligono();
 	ferramantaSelecionada="mover";
+	console.log(poligonoSelecionadoSVG);
 }
 function funcaoCriarPontoCurvaPoligono(){
 	ferramantaSelecionada="criarPontoCurvaPoligono";
@@ -96,9 +104,14 @@ function criarPontoPoligono(x, y) {
 	});
 	poligono.node.id = 'poligono_' + ContPoligono;
 	poligono.node.setAttributeNS(null, 'class', 'draggable');
+	//poligono.node.onclick = pegadoSaPorra(this);
 	poligono.draggable();
 	poligonoSelecionadoSVG = poligono;
 	document.getElementById(poligono.node.id).addEventListener('click', mostrarPontosPoligono, false);
+	document.getElementById(poligono.node.id).addEventListener('click', function(){
+		pegadoSaPorra(poligono);
+		ferramantaSelecionada = '';
+	},false);
 	ContPoligono++;
 	ferramantaSelecionada = "criarPonto";
 	mostrarPontosPoligono();
@@ -108,6 +121,12 @@ function criarPontoPoligono(x, y) {
 function criarPonto(x, y){
 	poligonoSelecionadoSVG.plot(poligonoSelecionadoSVG.plot().toString()+' '+x+','+y);
 	mostrarPontosPoligono();
+}
+
+function pegadoSaPorra(event)
+{
+    poligonoSelecionadoSVG = event;
+	console.log(poligonoSelecionadoSVG);
 }
 
 //Cria path e ponto com curva
