@@ -11,6 +11,7 @@ window.onload = function () {
 	document.getElementById('criarPontoCurvaPoligono').addEventListener("click", funcaoCriarPontoCurvaPoligono);
 	document.getElementById('moverPoligono').addEventListener("click", funcaoMoverPoligono);
 	document.getElementById('selecionarPoligono').addEventListener("click", funcaoSelecionarPoligono);
+	document.getElementById('deletar').addEventListener("click", deletar);
 	var coresSub = document.getElementsByClassName('coresSub');
 	for(var i=0;i<coresSub.length;i++){
 		coresSub[i].addEventListener("click", pintar);
@@ -59,6 +60,10 @@ window.onload = function () {
 		}
 		mousePressionado=false;
 	}
+}
+function deletar(){
+	poligonoSelecionado.outerHTML = "";
+	poligonoSelecionadoSVG.outerHTML = "";
 }
 
 function pintar(){
