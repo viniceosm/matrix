@@ -24,12 +24,24 @@ body{
 }
 .botao{
 	background-color: #0cd218;
-	font-size: 17px;
-	width: 100%;
-	overflow: hidden;
-	text-align: center;
+	width: 25px;
+	height: 35px;
 	cursor: pointer;
 	margin-bottom: 4px;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+	float: left;
+	margin-right: 12px;
+}
+.botao > img{
+	height: 100%;
+	width: 100%;
+	border: 1px black solid;
+	margin: 0;
+	padding: 0;
 }
 .draggable{
 	cursor:pointer;
@@ -45,6 +57,9 @@ body{
 	margin: 0;
 	padding: 3px;
 	overflow-y: scroll;
+}
+#ferramentas > div{
+	float: left;
 }
 #ferramentas::-webkit-scrollbar-thumb{
 	background-color: rgba(0,0,0,0.3);

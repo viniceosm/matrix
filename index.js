@@ -5,21 +5,37 @@ var pontoSelecionado;
 var ferramantaSelecionada;
 var mousePressionado=false;
 var pegarPoligono;
+var pontoSelecionadoVetor;
+
+
 window.onload = function () {
 	//Eventos elementos click
 	document.getElementById('criarPontoPoligono').addEventListener("click", funcaoCriarPontoPoligono);
 	document.getElementById('criarPontoCurvaPoligono').addEventListener("click", funcaoCriarPontoCurvaPoligono);
 	document.getElementById('moverPoligono').addEventListener("click", funcaoMoverPoligono);
-	document.getElementById('selecionarPoligono').addEventListener("click", funcaoSelecionarPoligono);
 	document.getElementById('deletar').addEventListener("click", deletar);
 	var coresSub = document.getElementsByClassName('coresSub');
 	for(var i=0;i<coresSub.length;i++){
 		coresSub[i].addEventListener("click", pintar);
 	};
 	
+	//Atalhos
+	document.onkeydown = function(){
+		var tecla = event.keyCode;
+		if(tecla==67){ //C
+			funcaoCriarPontoCurvaPoligono();
+		}else if(tecla==82){ //R
+			funcaoCriarPontoPoligono();
+		}else if(tecla==68){ //D
+			deletar();
+		}else if(tecla==77){ //M
+			funcaoMoverPoligono();
+		}
+	};
+
 	document.addEventListener('click', function(e) {
-    e = e || window.event;
-    var target = e.target || e.srcElement,
+    	e = e || window.event;
+    	var target = e.target || e.srcElement,
         poligonoSelecionadoSVG = target.getElementById;
 	}, false);
 	
@@ -118,7 +134,6 @@ function criarPonto(x, y){
 function pegadoSaPorra(event)
 {
     poligonoSelecionadoSVG = event;
-	console.log(poligonoSelecionadoSVG);
 }
 
 //Cria path e ponto com curva
@@ -158,6 +173,7 @@ function criarPontoCurva(x, y, nomeEventoMouse){
 		ultimoPontoPath[1] = x;
 		ultimoPontoPath[2] = y;
 		pontosPath[pontosPath.length-1] = ultimoPontoPath.join(',');
+		
 		console.log(pontosPath.join(','));
 
 		poligonoSelecionadoSVG.plot(pontosPath.join(','));
@@ -219,6 +235,28 @@ function mostrarPontoPoligonoNele(indicePonto) {
 	circle.node.id = 'pontoSelecionadoVetor';
 	circle.node.setAttributeNS(null, 'class', 'draggable');
 	circle.draggable();
+	pontoSelecionadoVetor = circle;
+}
+
+//atualiza posicao pontoPoligonoNele
+//é chamado no svg.draggable.js quando arrasta poligono
+function atualizaPontoPoligonoNele(elemento){
+	mostrarPontosPoligono();
+
+	if(pontoSelecionado == null || typeof pontoSelecionadoVetor == undefined){
+		pontoSelecionado = 0;
+	}
+	inputsPonto = document.querySelectorAll('[data-ponto_' + pontoSelecionado + ']');
+
+	if(inputsPonto.length>0){
+		xPonto = parseInt(inputsPonto[0].value);
+		yPonto = parseInt(inputsPonto[1].value);
+
+		if(document.getElementById('pontoSelecionadoVetor')) {
+			pontoSelecionadoVetor.x(xPonto-2);
+			pontoSelecionadoVetor.y(yPonto-2);
+		}
+	}
 }
 
 function aplicarPontos(indicePonto) {
