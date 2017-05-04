@@ -14,10 +14,7 @@ window.onload = function () {
 	document.getElementById('criarPontoCurvaPoligono').addEventListener("click", funcaoCriarPontoCurvaPoligono);
 	document.getElementById('moverPoligono').addEventListener("click", funcaoMoverPoligono);
 	document.getElementById('deletar').addEventListener("click", deletar);
-	document.getElementById('carregarImagem').addEventListener("click", () => {
-		//simula o click do input type="file"
-		document.getElementById('btnCarregarImagem').click();
-	});
+	document.getElementById('carregarImagem').addEventListener("click", funcaoCarregaImagem);
 	var coresSub = document.getElementsByClassName('coresSub');
 	for(var i=0;i<coresSub.length;i++){
 		coresSub[i].addEventListener("click", pintar);
@@ -34,6 +31,8 @@ window.onload = function () {
 			deletar();
 		}else if(tecla==77){ //M
 			funcaoMoverPoligono();
+		}else if(tecla==73){ //I
+			funcaoCarregaImagem();
 		}
 	};
 
@@ -113,7 +112,10 @@ function funcaoMoverPoligono(){
 function funcaoCriarPontoCurvaPoligono(){
 	ferramantaSelecionada="criarPontoCurvaPoligono";
 }
-
+function funcaoCarregaImagem(){
+	//simula o click do input type="file"
+	document.getElementById('btnCarregarImagem').click();
+}
 //Cria poligono e ponto
 function criarPontoPoligono(x, y) {
 	var poligono = svg.polygon(x+','+y).fill('none').stroke({
