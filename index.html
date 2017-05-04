@@ -6,12 +6,24 @@
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.5.0/svg.js"></script>
 		<script src="lib/svg.draggable.js"></script>
 		<script type="text/javascript" src="index.js"></script>
+		
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		<script src="lib/jquery-1.12.4.js"></script>
+		<script src="lib/jquery-ui.js"></script>
+		<script>
+			$( function() {
+				$( "#ferramentas" ).draggable();
+			} );
+			$( function() {
+				$( "#cores" ).draggable();
+			} );
+		</script>
 	</head>
 	<body>
 		<div id="bar">
 			<div>Drag and Drop</div>
 		</div>
-		<div id="ferramentas">
+		<div id="ferramentas" class="ui-widget-content">
 			<div class="botao"><img id="criarPontoPoligono" src="img/penAdiciona.png"/></div>
 			<div class="botao"><img id="criarPontoCurvaPoligono" src="img/penAdicionaCurva.png"/></div>
 			<div class="botao"><img id="moverPoligono" src="img/mover.png"/></div>
@@ -19,9 +31,9 @@
 			<div>Pontos do vetor</div>
 			<div id="camada_pontos"></div>
 		</div>
-		<div id="cores">
+		<div id="cores" class="ui-widget-content">
 				<div id="textoCores" class = "botaoA" style="text-align:center">
-				CORESs
+				CORES
 				</div>
 				<div id="divCores">
 					<div id="botaoRed" class = "coresSub" style="background-color:red"></div>
