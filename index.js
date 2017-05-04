@@ -40,6 +40,9 @@ window.onload = function () {
 	}, false);
 	
 	svg = SVG('svgmain');
+	document.getElementById('btnCarregarImagem').addEventListener("change", () =>{
+		svg.image(URL.createObjectURL(event.target.files[0]), 200, 300).draggable();
+	});
 	document.getElementById('svgmain').onclick = function(evt){
 		var x = evt.clientX;
 		var y = evt.clientY - this.offsetTop;

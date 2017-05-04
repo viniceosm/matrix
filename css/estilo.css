@@ -10,10 +10,10 @@ body{
 	width: 100%;
 }
 #bar{
-    font-size: 40px;
-    font-weight: 600;
-    font-family: tahoma;
-    height: 55px;
+	font-size: 40px;
+	font-weight: 600;
+	font-family: tahoma;
+	height: 55px;
 }
 #bar > div{
 	float: left;
@@ -36,19 +36,28 @@ body{
 	float: left;
 	margin-right: 5px;
 }
-.botao > img{
+.botao > img,
+.botao > input[type="file"]{
 	height: 100%;
 	width: 100%;
 	border: 1px black solid;
 	margin: 0;
 	padding: 0;
 }
+#btnCarregarImagem{
+	padding-top: 0px;
+	background: #ff9900 url("./img/uploadImage.jpg") no-repeat 0px;
+	background-size: 100%;
+	background-position: 0px 0px;
+}
+#btnCarregarImagem::-webkit-file-upload-button{
+	display: none;
+}
 .draggable{
 	cursor:pointer;
 }
 #ferramentas{
 	width: 67px;
-	height: 80px;
 	background-color: grey;
 	position: absolute;
 	z-index: 1;
@@ -74,7 +83,7 @@ body{
 	background-color: grey;
 	position: absolute;
 	z-index: 1;
-	top:163px;
+	top:208px;
 	color: white;
 	margin: 0;
 	padding: 3px;
