@@ -80,6 +80,8 @@ window.onload = function () {
 function deletar(){
 	poligonoSelecionado.outerHTML = "";
 	poligonoSelecionadoSVG.outerHTML = "";
+	document.getElementById("camada_pontos").innerHTML = '';
+	document.getElementById('pontoSelecionadoVetor').outerHTML = "";
 }
 
 function pintar(){
