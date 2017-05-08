@@ -50,10 +50,8 @@ window.onload = function () {
 		var x = evt.clientX;
 		var y = evt.clientY - this.offsetTop;
 		if (ferramantaSelecionada=="criarPontoPoligono") {
-			socket.emit('criarPontoPoligono', {x,y});
 			criarPontoPoligono(x, y);
 		}else if (ferramantaSelecionada=="criarPonto") {
-			socket.emit('criarPonto', {x,y});
 			criarPonto(x, y);
 		}
 	}
