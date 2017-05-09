@@ -120,7 +120,7 @@ function funcaoCarregaImagem(){
 function criarPontoPoligono(x, y) {
 	var poligono = svg.polygon(x+','+y).fill('none').stroke({
 		width: 1
-	});
+	}).fill('white');
 	poligono.node.id = 'poligono_' + ContPoligono;
 	poligono.node.setAttributeNS(null, 'class', 'draggable');
 	//poligono.node.onclick = pegadoSaPorra(this);
