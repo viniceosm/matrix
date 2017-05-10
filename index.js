@@ -165,7 +165,6 @@ function pegadoSaPorra(event)
 {
     poligonoSelecionadoSVG = event;
 }
-
 //Cria path e ponto com curva
 function criarPontoCurvaPoligono(x, y){
 	var poligono = svg.path('M '+x+' '+y).fill('none').stroke({

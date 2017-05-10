@@ -40,15 +40,8 @@
 					<button class="jscolor {valueElement:'chosen-value', onFineChange:'setTextColor(this)'}">
 						Pick text color
 					</button>
-					HEX value: <input id="chosen-value" value="000000" style="width:96%">
 					<div id="bottonCor" class = "coresSub" style="background-color:black"></div>
 					<div id="bottonCorParente" class = "coresSubParente" style= "background-color:transparent"></div>
-					<script>
-					function setTextColor(picker) {
-						document.getElementById("bottonCor").style.backgroundColor = '#' + picker.toString();
-						document.getElementById("textoCores").style.backgroundColor = '#' + picker.toString();
-					}
-					</script>
 				</div>
 		</div>
 		<div id="svgmain"></div>
