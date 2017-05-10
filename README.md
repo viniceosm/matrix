@@ -8,6 +8,8 @@
 <li>4 - Mover poligono</li>
 <li>5 - Excluir poligono</li>
 <li>6 - Upload de imagem</li>
+<li>7 - Colorir poligono</li>
+<li>8 - Reposição de vetores</li>
 </ul>
 </h5>
 <h5>O nosso projeto é um editor de polígonos utilizando a framework SVG.JS onde o usuário poderá desenha livremente com linha reta ou curva contando também com ferramentas para editar as posições dos pontos do polígono selecionado, excluir o polígono, move-lo, pinta-lo e selecionar imagens e colocar no editor e vetorizar imagens.</h5>
