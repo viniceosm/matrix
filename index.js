@@ -15,10 +15,8 @@ window.onload = function () {
 	document.getElementById('moverPoligono').addEventListener("click", funcaoMoverPoligono);
 	document.getElementById('deletar').addEventListener("click", deletar);
 	document.getElementById('carregarImagem').addEventListener("click", funcaoCarregaImagem);
-	var coresSub = document.getElementsByClassName('coresSub');
-	for(var i=0;i<coresSub.length;i++){
-		coresSub[i].addEventListener("click", pintar);
-	};
+	document.getElementById('bottonCorParente').addEventListener("click", pintar);
+	document.getElementById('bottonCor').addEventListener("click", pintar);
 	
 	$( function() {
 		$( "#ferramentas" ).draggable();
@@ -93,6 +91,17 @@ window.onload = function () {
 		mousePressionado=false;
 	}
 }
+
+function corTransparente(){
+	var aux = poligonoSelecionado;
+	var aux2 = poligonoSelecionadoSVG;
+	console.log(aux);
+	poligonoSelecionado.style.fill="green";
+	poligonoSelecionado = aux;
+	poligonoSelecionadoSVG = aux2;
+	console.log(poligonoSelecionado);
+}
+
 function deletar(){
 	poligonoSelecionado.outerHTML = "";
 	poligonoSelecionadoSVG.outerHTML = "";
@@ -101,7 +110,7 @@ function deletar(){
 }
 
 function pintar(){
-	console.log(poligonoSelecionadoSVG);
+	
 	poligonoSelecionadoSVG.fill(this.style.backgroundColor);
 	
 }
@@ -123,14 +132,14 @@ function funcaoCriarPontoCurvaPoligono(){
 	ferramantaSelecionada="criarPontoCurvaPoligono";
 }
 function funcaoCarregaImagem(){
-	//simula o click do input type="file"
+	 //simula o click do input type="file"
 	document.getElementById('btnCarregarImagem').click();
 }
 //Cria poligono e ponto
 function criarPontoPoligono(x, y) {
 	var poligono = svg.polygon(x+','+y).fill('none').stroke({
 		width: 1
-	}).fill('white');
+	}).fill('transparent');
 	poligono.node.id = 'poligono_' + ContPoligono;
 	poligono.node.setAttributeNS(null, 'class', 'draggable');
 	//poligono.node.onclick = pegadoSaPorra(this);
@@ -156,7 +165,6 @@ function pegadoSaPorra(event)
 {
     poligonoSelecionadoSVG = event;
 }
-
 //Cria path e ponto com curva
 function criarPontoCurvaPoligono(x, y){
 	var poligono = svg.path('M '+x+' '+y).fill('none').stroke({

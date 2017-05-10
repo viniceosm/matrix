@@ -126,3 +126,14 @@ body{
 	margin-left: 5px;
 	margin-top : 5px;
 }
+
+.coresSubParente{
+	width:  9.5px;
+	height: 11px;
+	float:left;
+	margin-left: 5px;
+	margin-top : 5px;
+}
+#bottonCorParente {
+	border: solid 1px black;
+}
