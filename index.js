@@ -132,7 +132,7 @@ function funcaoCriarPontoCurvaPoligono(){
 	ferramantaSelecionada="criarPontoCurvaPoligono";
 }
 function funcaoCarregaImagem(){
-	//simula o click do input type="file"
+	 //simula o click do input type="file"
 	document.getElementById('btnCarregarImagem').click();
 }
 //Cria poligono e ponto
