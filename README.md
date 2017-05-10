@@ -14,7 +14,7 @@ Aqui sera a exclusão do poligono que você selecionar.
 <li>6 - Upload de imagem</li>
 Se você quiser vetorizar uma imagem aqui sera feito o upload da imagem para vetorização.
 <li>7 - Colorir poligono</li>
-Ao selecionar um polígono você poderá clicar no menu de cores e selecionar a cor que gostaria de colocar no vetor.
+Ao selecionar um polígono você poderá clicar no menu de cores e selecionar a cor que gostaria de colocar no polígono.
 <li>8 - Reposição de vetores</li>
 Existe um menu em baixo das ferramentas chamados pontos do vetor, onde estão todos os pontos do polígono, e assim você poderá deixar o ponto do poligono maior ou menor.
 </ul>
