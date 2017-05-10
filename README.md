@@ -16,11 +16,9 @@ Se você quiser vetorizar uma imagem aqui sera feito o upload da imagem para vet
 <li>7 - Colorir poligono</li>
 Ao selecionar um polígono você poderá clicar no menu de cores e selecionar a cor que gostaria de colocar no vetor.
 <li>8 - Reposição de vetores</li>
-<p>Existe um menu em baixo das ferramentas chamados pontos do vetor, onde estão todos os pontos do polígono, e assim você poderá deixar o ponto do poligono maior ou menor.</p>
+Existe um menu em baixo das ferramentas chamados pontos do vetor, onde estão todos os pontos do polígono, e assim você poderá deixar o ponto do poligono maior ou menor.
 </ul>
 </h5>
-<h5>O nosso projeto é um editor de polígonos utilizando a framework SVG.JS onde o usuário poderá desenha livremente com linha reta ou curva contando também com ferramentas para editar as posições dos pontos do polígono selecionado, excluir o polígono, move-lo, pinta-lo e selecionar imagens e colocar no editor e vetorizar imagens.</h5>
-
 <h1>Integrantes:</h1>
 <h5>Diego Lipinski, Dhiego Gonçalves, Maicon Liesenberg, Mateus Gadotti e Vinícius Miiller</h5>
 
