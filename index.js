@@ -18,6 +18,16 @@ window.onload = function () {
 	document.getElementById('bottonCorParente').addEventListener("click", pintar);
 	document.getElementById('bottonCor').addEventListener("click", pintar);
 	
+	$( function() {
+		$( "#ferramentas" ).draggable();
+	} );
+	$( function() {
+		$( "#cores" ).draggable();
+	} );
+	$( function() {
+		$( "#pontoVetores" ).draggable();
+	} );
+	
 	//Atalhos
 	document.onkeydown = function(){
 		var tecla = event.keyCode;
@@ -277,6 +287,13 @@ function atualizaPontoPoligonoNele(elemento){
 			pontoSelecionadoVetor.y(yPonto-2);
 		}
 	}
+}
+
+
+
+function setTextColor(picker) {
+	document.getElementById("bottonCor").style.backgroundColor = '#' + picker.toString();
+	document.getElementById("textoCores").style.backgroundColor = '#' + picker.toString();
 }
 
 function aplicarPontos(indicePonto) {
