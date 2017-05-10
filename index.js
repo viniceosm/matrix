@@ -80,7 +80,7 @@ window.onload = function () {
 			var x = evt.clientX;
 			var y = evt.clientY - this.offsetTop;
 			if (ferramantaSelecionada=="criarPontoCurva") {
-				criarPontoCurva(x, y, "mouseup");
+				criarPontoCurva(x, y, "mousemove");
 			}
 		}
 	}
@@ -190,14 +190,53 @@ function criarPontoCurva(x, y, nomeEventoMouse){
 		poligonoSelecionadoSVG.plot(pontoPathNovo);
 		mostrarPontosPoligono();
 	}else if(nomeEventoMouse=="mouseup"){
-		var ultimoPontoPath = pontosPath[pontosPath.length-1].toString().split(',')
+		var ultimoPontoPath = pontosPath[pontosPath.length-1].toString().split(',');
+		
 		ultimoPontoPath[1] = x;
 		ultimoPontoPath[2] = y;
-		pontosPath[pontosPath.length-1] = ultimoPontoPath.join(',');
+
+		if(pontosPath.length>1){
+			var penultimoPontoPath = pontosPath[pontosPath.length-2].toString().split(',');
+
+			if(penultimoPontoPath.indexOf('Z')>-1){
+				penultimoPontoPath="";
+				pontosPath[pontosPath.length-2] = penultimoPontoPath;
+			}
+		}
+
+		pontosPath[pontosPath.length-1] = ultimoPontoPath.join(',') + 'Z';
 		
-		console.log(pontosPath.join(','));
+		//console.log(pontosPath.join(','));
 
 		poligonoSelecionadoSVG.plot(pontosPath.join(','));
+		//FAZ JOIN NOVAMENTE PARA TIRAR VIRGULA DUPLICADA
+		pontosPath = poligonoSelecionadoSVG.plot().value;
+		poligonoSelecionadoSVG.plot(pontosPath.join(','));
+		console.log("MOUSEUP: "+ pontosPath.join(','));
+	}else if(nomeEventoMouse=="mousemove"){
+		var ultimoPontoPath = pontosPath[pontosPath.length-1].toString().split(',');
+		
+		ultimoPontoPath[1] = x;
+		ultimoPontoPath[2] = y;
+
+		if(pontosPath.length>1){
+			var penultimoPontoPath = pontosPath[pontosPath.length-2].toString().split(',');
+
+			if(penultimoPontoPath.indexOf('Z')>-1){
+				penultimoPontoPath="";
+				pontosPath[pontosPath.length-2] = penultimoPontoPath;
+			}
+		}
+
+		pontosPath[pontosPath.length-1] = ultimoPontoPath.join(',');
+		
+		//console.log(pontosPath.join(','));
+
+		poligonoSelecionadoSVG.plot(pontosPath.join(','));
+		//FAZ JOIN NOVAMENTE PARA TIRAR VIRGULA DUPLICADA
+		pontosPath = poligonoSelecionadoSVG.plot().value;
+		poligonoSelecionadoSVG.plot(pontosPath.join(','));
+		console.log("MOUSEMOVE: "+ pontosPath.join(','));
 	}
 }
 function mostrarPontosPoligono() {
