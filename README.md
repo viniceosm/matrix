@@ -4,7 +4,7 @@
 <h5>
 <ul>
 <li>1 - Criar poligono reto</li>
-  Você poderá selecionar o local de criação do vetor e com cada clique sera adicionado um novo ponto ao vetor.
+Você poderá selecionar o local de criação do vetor e com cada clique sera adicionado um novo ponto ao vetor.
 <li>2 - Criar poligono curvado</li>
   É praticamente a mesma coisa do anterior só que agora você poderá fazer um polígono curvado.
 <li>4 - Mover poligono</li>
