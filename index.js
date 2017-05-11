@@ -16,7 +16,7 @@ window.onload = function () {
 	document.getElementById('deletar').addEventListener("click", deletar);
 	document.getElementById('carregarImagem').addEventListener("click", funcaoCarregaImagem);
 	document.getElementById('bottonCorParente').addEventListener("click", pintar);
-	document.getElementById('bottonCor').addEventListener("click", pintar);
+	document.getElementById('textoCores').addEventListener("click", pintar);
 	
 	$( function() {
 		$( "#ferramentas" ).draggable();
@@ -291,7 +291,7 @@ function atualizaPontoPoligonoNele(elemento){
 
 
 function setTextColor(picker) {
-	document.getElementById("bottonCor").style.backgroundColor = '#' + picker.toString();
+	
 	document.getElementById("textoCores").style.backgroundColor = '#' + picker.toString();
 }
 
