@@ -10,8 +10,8 @@
 <ul>
 <li>1 - Criar poligono reto</li>
 Você poderá selecionar o local de criação do vetor e com cada clique sera adicionado um novo ponto ao vetor.
-<li>2 - Criar poligono curvado</li>
-Você poderá selcionar um local para criação de um vetor igual o anterior, só que agora você poderá fazer um polígono curvado.
+<li>2 - Desenho libre</li>
+Você poderá selecionar o local e fazer um desenho livre.
 <li>4 - Mover poligono</li>
 Você pode mover o polígono para onde quiser.
 <li>5 - Excluir poligono</li>
