@@ -1,5 +1,5 @@
 <h1>Projeto:</h1> 
-<h4> O projeto trata-se de um editor de polígonos utilizando a framework SVG.JS, o editor contem apenas uma página onde terá todas as funcionalidades listadas a seguir</h4>
+<h4> O projeto trata-se de um editor de desenhos utilizando a framework SVG.JS, o editor contem apenas uma página onde terá todas as funcionalidades listadas a seguir</h4>
 <h1>O que é SVG?</h1>
 <h5>SVG.js é uma livraria para manipulação e animação de SVG's.
 <br>Com o objetivo de ser leve, rápida e de fácil interpretação, foi a escolha mais viável para o projeto.
