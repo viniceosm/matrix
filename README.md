@@ -2,9 +2,9 @@
 <h4> O projeto trata-se de um editor de polígonos utilizando a framework SVG.JS, o editor contem apenas uma página onde terá todas as funcionalidades listadas a seguir</h4>
 <h1>O que é SVG?</h1>
 <h5>SVG.js é uma livraria para manipulação e animação de SVG's.
-<br>\\Com o objetivo de ser leve, rápida e de fácil interpretação, foi a escolha mais viável para o projeto.
-<br>\\O que o SVG.js faz é nada mais do que usar Javascript para criar e/ou desenhar SVG's dinâmicos dentro do HTML e oferecer a capacidade de manipulá-los, simples assim.
-<br>\\O SVG.js não possui dependências, é de código aberto e usa a licença MIT.</h5>
+<br>Com o objetivo de ser leve, rápida e de fácil interpretação, foi a escolha mais viável para o projeto.
+<br>O que o SVG.js faz é nada mais do que usar Javascript para criar e/ou desenhar SVG's dinâmicos dentro do HTML e oferecer a capacidade de manipulá-los, simples assim.
+<br>O SVG.js não possui dependências, é de código aberto e usa a licença MIT.</h5>
 <h1>Funcionalidades:</h1>
 <h5>
 <ul>
