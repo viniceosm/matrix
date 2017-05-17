@@ -10,7 +10,7 @@
 <ul>
 <li>1 - Criar poligono reto</li>
 Você poderá selecionar o local de criação do vetor e com cada clique sera adicionado um novo ponto ao vetor.
-<li>2 - Desenho libre</li>
+<li>2 - Desenho livre</li>
 Você poderá selecionar o local e fazer um desenho livre.
 <li>4 - Mover poligono</li>
 Você pode mover o polígono para onde quiser.
