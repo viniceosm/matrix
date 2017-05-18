@@ -1,7 +1,0 @@
-{
-  "name": "Matrix",
-  "dependencies": {
-    "socket.io": "*",
-    "express": "*"
-  }
-}

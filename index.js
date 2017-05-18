@@ -16,7 +16,7 @@ window.onload = function () {
 	document.getElementById('deletar').addEventListener("click", deletar);
 	document.getElementById('carregarImagem').addEventListener("click", funcaoCarregaImagem);
 	document.getElementById('bottonCorParente').addEventListener("click", pintar);
-	document.getElementById('bottonCor').addEventListener("click", pintar);
+	document.getElementById('textoCores').addEventListener("click", pintar);
 	
 	$( function() {
 		$( "#ferramentas" ).draggable();
@@ -44,6 +44,29 @@ window.onload = function () {
 		}
 	};
 
+	//sdiofjasiopdfjasdf
+
+	jQuery.fn.single_double_click = function(single_click_callback, double_click_callback, timeout) {
+  return this.each(function(){
+    var clicks = 0, self = this;
+    jQuery(this).click(function(event){
+      clicks++;
+      if (clicks == 1) {
+        setTimeout(function(){
+          if(clicks == 1) {
+            single_click_callback.call(self, event);
+          } else {
+            double_click_callback.call(self, event);
+          }
+          clicks = 0;
+        }, timeout || 300);
+      }
+    });
+  });
+}
+
+	//asod[kasd]
+
 	document.addEventListener('click', function(e) {
     	e = e || window.event;
     	var target = e.target || e.srcElement,
@@ -52,7 +75,7 @@ window.onload = function () {
 	
 	svg = SVG('svgmain');
 	document.getElementById('btnCarregarImagem').addEventListener("change", () =>{
-		svg.image(URL.createObjectURL(event.target.files[0]), 200, 300).draggable();
+		svg.image(URL.createObjectURL(event.target.files[0]), 500, 600).draggable();
 	});
 	document.getElementById('svgmain').onclick = function(evt){
 		var x = evt.clientX;
@@ -78,7 +101,7 @@ window.onload = function () {
 			var x = evt.clientX;
 			var y = evt.clientY - this.offsetTop;
 			if (ferramantaSelecionada=="criarPontoCurva") {
-				criarPontoCurva(x, y, "mousemove");
+				criarPontoCurva(x, y, "mousedown");
 			}
 		}
 	}
@@ -110,9 +133,8 @@ function deletar(){
 }
 
 function pintar(){
-	
+	poligonoSelecionado.style.color = (this.style.backgroundColor);
 	poligonoSelecionadoSVG.fill(this.style.backgroundColor);
-	
 }
 
 function desmarcarPoligono(){
@@ -139,7 +161,7 @@ function funcaoCarregaImagem(){
 function criarPontoPoligono(x, y) {
 	var poligono = svg.polygon(x+','+y).fill('none').stroke({
 		width: 1
-	}).fill('transparent');
+	});
 	poligono.node.id = 'poligono_' + ContPoligono;
 	poligono.node.setAttributeNS(null, 'class', 'draggable');
 	//poligono.node.onclick = pegadoSaPorra(this);
@@ -148,7 +170,6 @@ function criarPontoPoligono(x, y) {
 	document.getElementById(poligono.node.id).addEventListener('click', mostrarPontosPoligono, false);
 	document.getElementById(poligono.node.id).addEventListener('click', function(){
 		pegadoSaPorra(poligono);
-		ferramantaSelecionada = '';
 	},false);
 	ContPoligono++;
 	ferramantaSelecionada = "criarPonto";
@@ -174,10 +195,17 @@ function criarPontoCurvaPoligono(x, y){
 	poligono.node.setAttributeNS(null, 'class', 'draggable');
 	poligono.draggable();
 	poligonoSelecionadoSVG = poligono;
+	document.getElementById("camada_pontos").innerHTML = "";
 	
-	document.getElementById(poligono.node.id).addEventListener('click', funcaoSelecionarPoligono, false);
-	ferramantaSelecionada = "criarPontoCurva";
+	document.getElementById(poligono.node.id).addEventListener('click', mostrarPontosPoligono, false);
+	document.getElementById(poligono.node.id).addEventListener('click', function(){
+		pegadoSaPorra(poligono);
+		ferramantaSelecionada = 'mover';
+	},false);
 	ContPoligono++;
+	ferramantaSelecionada = "criarPontoCurva";
+	mostrarPontosPoligono();
+	
 }
 //Selecionar poligono
 function funcaoSelecionarPoligono(){
@@ -203,24 +231,20 @@ function criarPontoCurva(x, y, nomeEventoMouse){
 		ultimoPontoPath[1] = x;
 		ultimoPontoPath[2] = y;
 
-		if(pontosPath.length>1){
+		/*if(pontosPath.length>1){
 			var penultimoPontoPath = pontosPath[pontosPath.length-2].toString().split(',');
 
 			if(penultimoPontoPath.indexOf('Z')>-1){
 				penultimoPontoPath="";
 				pontosPath[pontosPath.length-2] = penultimoPontoPath;
 			}
-		}
+		}*/
 
-		pontosPath[pontosPath.length-1] = ultimoPontoPath.join(',') + 'Z';
-		
-		//console.log(pontosPath.join(','));
-
+		pontosPath[pontosPath.length-1] = ultimoPontoPath.join(',');
 		poligonoSelecionadoSVG.plot(pontosPath.join(','));
 		//FAZ JOIN NOVAMENTE PARA TIRAR VIRGULA DUPLICADA
 		pontosPath = poligonoSelecionadoSVG.plot().value;
 		poligonoSelecionadoSVG.plot(pontosPath.join(','));
-		console.log("MOUSEUP: "+ pontosPath.join(','));
 	}else if(nomeEventoMouse=="mousemove"){
 		var ultimoPontoPath = pontosPath[pontosPath.length-1].toString().split(',');
 		
@@ -330,7 +354,7 @@ function atualizaPontoPoligonoNele(elemento){
 
 
 function setTextColor(picker) {
-	document.getElementById("bottonCor").style.backgroundColor = '#' + picker.toString();
+	
 	document.getElementById("textoCores").style.backgroundColor = '#' + picker.toString();
 }
 

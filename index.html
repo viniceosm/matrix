@@ -3,7 +3,6 @@
 	<head>
 		<title>Matrix SVG</title>
 		<link rel="stylesheet" type="text/css" href="css/estilo.css">
-		<!--<script src="socket.io/socket.io.js"></script>-->
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.5.0/svg.js"></script>
 		<script src="lib/svg.draggable.js"></script>
 		<script src="jscolor.js"></script>
@@ -16,7 +15,7 @@
 	</head>
 	<body>
 		<div id="bar">
-			<div>Drag and Drop</div>
+			<div></div>
 		</div>
 		<div id="ferramentas" class="ui-widget-content">
 			<div class="botao"><img id="criarPontoPoligono" src="img/penAdiciona.png"/></div>
@@ -34,13 +33,13 @@
 		</div>
 		<div id="cores" class="ui-widget-content">
 				<div id="textoCores" class = "botaoA" style="text-align:center">
-				CORES
+				
 				</div>
 				<div id="divCores">
 					<button class="jscolor {valueElement:'chosen-value', onFineChange:'setTextColor(this)'}">
-						Pick text color
+						Escolha a cor
 					</button>
-					<div id="bottonCor" class = "coresSub" style="background-color:black"></div>
+					
 					<div id="bottonCorParente" class = "coresSubParente" style= "background-color:transparent"></div>
 				</div>
 		</div>
