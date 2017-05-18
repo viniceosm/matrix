@@ -95,78 +95,8 @@ function funcaoCarregaImagem(){
 	//simula o click do input type="file"
 	document.getElementById('btnCarregarImagem').click();
 }
-//Cria poligono e ponto
-function criarPontoPoligono(x, y) {
-	var poligono = svg.polygon(x+','+y).fill('none').stroke({
-		width: 1
-	});
-	poligono.node.id = 'poligono_' + ContPoligono;
-	poligono.node.setAttributeNS(null, 'class', 'draggable');
-	//poligono.node.onclick = selecionarPoligono(this);
-	poligono.draggable();
-	poligonoSelecionadoSVG = poligono;
-	document.getElementById(poligono.node.id).addEventListener('click', mostrarPontosPoligono, false);
-	document.getElementById(poligono.node.id).addEventListener('click', function(){
-		selecionarPoligono(poligono);
-	},false);
-	ContPoligono++;
-	ferramantaSelecionada = "criarPonto";
-	mostrarPontosPoligono();
-}
-
-//Adiciona ponto de um poligono ja selecionado
-function criarPonto(x, y){
-	poligonoSelecionadoSVG.plot(poligonoSelecionadoSVG.plot().toString()+' '+x+','+y);
-	mostrarPontosPoligono();
-}
-
 function selecionarPoligono(event){
 	poligonoSelecionadoSVG = event;
-}
-
-//Cria path e ponto com curva
-function criarPontoCurvaPoligono(x, y){
-	var poligono = svg.path('M '+x+' '+y).fill('none').stroke({
-		width: 1
-	});
-	poligono.node.id = 'poligono_' + ContPoligono;
-	poligono.node.setAttributeNS(null, 'class', 'draggable');
-	poligono.draggable();
-	poligonoSelecionadoSVG = poligono;
-	document.getElementById("camada_pontos").innerHTML = "";
-	
-	document.getElementById(poligono.node.id).addEventListener('click', mostrarPontosPoligono, false);
-	document.getElementById(poligono.node.id).addEventListener('click', function(){
-		selecionarPoligono(poligono);
-		ferramantaSelecionada = 'mover';
-	},false);
-	ContPoligono++;
-	ferramantaSelecionada = "criarPontoCurva";
-	mostrarPontosPoligono();
-	
-}
-
-//Adiciona ponto com curva de um path
-function criarPontoCurva(x, y, nomeEventoMouse){
-	var pontosPath = poligonoSelecionadoSVG.plot().value;
-
-	if(nomeEventoMouse=="mousedown"){
-		var pontoPathNovo = pontosPath.toString()+' Q '+x+' '+y+' '+x+' '+y;
-
-		poligonoSelecionadoSVG.plot(pontoPathNovo);
-		mostrarPontosPoligono();
-	}else if(nomeEventoMouse=="mouseup"){
-		var ultimoPontoPath = pontosPath[pontosPath.length-1].toString().split(',');
-		
-		ultimoPontoPath[1] = x;
-		ultimoPontoPath[2] = y;
-
-		pontosPath[pontosPath.length-1] = ultimoPontoPath.join(',');
-		poligonoSelecionadoSVG.plot(pontosPath.join(','));
-		//FAZ JOIN NOVAMENTE PARA TIRAR VIRGULA DUPLICADA
-		pontosPath = poligonoSelecionadoSVG.plot().value;
-		poligonoSelecionadoSVG.plot(pontosPath.join(','));
-	}
 }
 function mostrarPontosPoligono() {
 	if(this == window){
@@ -259,4 +189,49 @@ function aplicarPontos(indicePonto) {
 	poligonoSelecionadoSVG.plot(pontos.join(" "));
 
 	mostrarPontoPoligonoNele(indicePonto);
+}
+
+//Cria path e ponto com curva
+function criarPontoCurvaPoligono(x, y){
+	var poligono = svg.path('M '+x+' '+y).fill('none').stroke({
+		width: 1
+	});
+	poligono.node.id = 'poligono_' + ContPoligono;
+	poligono.node.setAttributeNS(null, 'class', 'draggable');
+	poligono.draggable();
+	poligonoSelecionadoSVG = poligono;
+	document.getElementById("camada_pontos").innerHTML = "";
+	
+	document.getElementById(poligono.node.id).addEventListener('click', mostrarPontosPoligono, false);
+	document.getElementById(poligono.node.id).addEventListener('click', function(){
+		selecionarPoligono(poligono);
+		ferramantaSelecionada = 'mover';
+	},false);
+	ContPoligono++;
+	ferramantaSelecionada = "criarPontoCurva";
+	mostrarPontosPoligono();
+	
+}
+
+//Adiciona ponto com curva de um path
+function criarPontoCurva(x, y, nomeEventoMouse){
+	var pontosPath = poligonoSelecionadoSVG.plot().value;
+
+	if(nomeEventoMouse=="mousedown"){
+		var pontoPathNovo = pontosPath.toString()+' Q '+x+' '+y+' '+x+' '+y;
+
+		poligonoSelecionadoSVG.plot(pontoPathNovo);
+		mostrarPontosPoligono();
+	}else if(nomeEventoMouse=="mouseup"){
+		var ultimoPontoPath = pontosPath[pontosPath.length-1].toString().split(',');
+		
+		ultimoPontoPath[1] = x;
+		ultimoPontoPath[2] = y;
+
+		pontosPath[pontosPath.length-1] = ultimoPontoPath.join(',');
+		poligonoSelecionadoSVG.plot(pontosPath.join(','));
+		//FAZ JOIN NOVAMENTE PARA TIRAR VIRGULA DUPLICADA
+		pontosPath = poligonoSelecionadoSVG.plot().value;
+		poligonoSelecionadoSVG.plot(pontosPath.join(','));
+	}
 }
