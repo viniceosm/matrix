@@ -1,5 +1,6 @@
 //Cria poligono e ponto
 function criarPontoPoligono(x, y) {
+	
 	var poligono = svg.polygon(x+','+y).fill('none').stroke({
 		width: 1
 	});
@@ -10,7 +11,10 @@ function criarPontoPoligono(x, y) {
 	poligonoSelecionadoSVG = poligono;
 	document.getElementById(poligono.node.id).addEventListener('click', mostrarPontosPoligono, false);
 	document.getElementById(poligono.node.id).addEventListener('click', function(){
-		selecionarPoligono(poligono);
+		if(ferramantaSelecionada = "moverPoligono"){
+			selecionarPoligono(poligono);
+		}
+		
 	},false);
 	ContPoligono++;
 	ferramantaSelecionada = "criarPonto";

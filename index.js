@@ -81,6 +81,7 @@ function desmarcarPoligono(){
 }
 
 function funcaoCriarPontoPoligono(){
+	poligonoSelecionadoSVG = null;
 	ferramantaSelecionada = "criarPontoPoligono";
 }
 function funcaoMoverPoligono(){
