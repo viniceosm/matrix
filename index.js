@@ -16,6 +16,7 @@ window.onload = function () {
 	document.getElementById('deletar').addEventListener("click", deletar);
 	document.getElementById('carregarImagem').addEventListener("click", funcaoCarregaImagem);
 	document.getElementById('bottonCorParente').addEventListener("click", pintar);
+	document.getElementById('bottonCorParente2').addEventListener("click", pintar2);
 	document.getElementById('textoCores').addEventListener("click", pintar);
 	
 	$( function() {
@@ -73,6 +74,10 @@ function deletar(){
 function pintar(){
 	poligonoSelecionado.style.color = (this.style.backgroundColor);
 	poligonoSelecionadoSVG.fill(this.style.backgroundColor);
+}
+
+function pintar2(){
+	poligonoSelecionadoSVG.fill("none");
 }
 
 function desmarcarPoligono(){
