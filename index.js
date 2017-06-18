@@ -18,7 +18,7 @@ window.onload = function () {
 	document.getElementById('bottonCorParente').addEventListener("click", pintar);
 	document.getElementById('bottonCorParente2').addEventListener("click", pintar2);
 	document.getElementById('textoCores').addEventListener("click", pintar);
-	
+
 	$( function() {
 		$( "#ferramentas" ).draggable();
 	} );
@@ -28,7 +28,7 @@ window.onload = function () {
 	$( function() {
 		$( "#pontoVetores" ).draggable();
 	} );
-	
+
 	//Atalhos
 	document.onkeydown = function(){
 		var tecla = event.keyCode;
@@ -50,8 +50,8 @@ window.onload = function () {
 		var target = e.target || e.srcElement,
 		poligonoSelecionadoSVG = target.getElementById;
 	}, false);
-	
-	
+
+
 }
 
 function corTransparente(){
@@ -119,24 +119,22 @@ function mostrarPontosPoligono() {
 			x = pontos[i].split(",")[0];
 			y = pontos[i].split(",")[1];
 
-			document.getElementById("camada_pontos").innerHTML += '' +
-				' <div class="linha-ponto" id="linha-ponto_' + i + '"' +
-				' onclick="mostrarPontoPoligonoNele(' + i + ')"> ' +
-				' Ponto_' + i + '<br>' +
-				//input do x
-				' <input type="number" ' +
-				' data-ponto_' + i + ' ' +
-				' oninput="aplicarPontos(' + i + ')" ' +
-				' style="width:40px" ' +
-				' value="' + x + '"/> ' +
+			document.getElementById("camada_pontos").innerHTML += `
+				<div class="linha-ponto" id="linha-ponto_${i}"
+					onclick="mostrarPontoPoligonoNele(${i})">
+					Ponto_${i}<br>
+					<input type="number"
+					data-ponto_${i}
+					oninput="aplicarPontos(${i})"
+					style="width:40px"
+					value="${x}"/>
 
-				//input do y
-				' <input type="number" ' +
-				' data-ponto_' + i + ' ' +
-				' oninput="aplicarPontos(' + i + ')" ' +
-				' style="width:40px" ' +
-				' value="' + y + '"/> ' +
-				' </div> ';
+					<input type="number"
+					data-ponto_${i} +
+					oninput="aplicarPontos(${i})"
+					style="width:40px"
+					value="${y}"/>
+				</div> `;
 		}
 	}
 }
@@ -184,7 +182,7 @@ function atualizaPontoPoligonoNele(elemento){
 	}
 }
 
-function setTextColor(picker) {	
+function setTextColor(picker) {
 	document.getElementById("textoCores").style.backgroundColor = '#' + picker.toString();
 }
 
