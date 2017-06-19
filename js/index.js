@@ -17,7 +17,7 @@ window.onload = function () {
 	document.getElementById('carregarImagem').addEventListener("click", funcaoCarregaImagem);
 	document.getElementById('bottonCorParente').addEventListener("click", pintar);
 	document.getElementById('bottonCorParente2').addEventListener("click", pintar2);
-	document.getElementById('textoCores').addEventListener("click", pintar);
+	document.getElementById('textoCores').addEventListener("click", funcaoPintar);
 
 	$( function() {
 		$( "#ferramentas" ).draggable();
@@ -71,9 +71,20 @@ function deletar(){
 	document.getElementById('pontoSelecionadoVetor').outerHTML = "";
 }
 
-function pintar(){
-	poligonoSelecionado.style.color = (this.style.backgroundColor);
-	poligonoSelecionadoSVG.fill(this.style.backgroundColor);
+function funcaoPintar(){
+	let cor = document.getElementById('textoCores').style.backgroundColor;
+	let dados = { cor, poligonoSelecionadoSVG: poligonoSelecionadoSVG.node.id };
+	socket.emit('pintar', dados);
+	pintar(cor);
+}
+
+function pintar(cor, poligonoPintar){
+	// poligonoSelecionado.style.color = (this.style.backgroundColor);
+	poligonoPintar = poligonosSVG[poligonoPintar];
+	if(typeof poligonoPintar === 'undefined'){
+		poligonoPintar = poligonoSelecionadoSVG;
+	}
+	poligonoPintar.fill(cor);
 }
 
 function pintar2(){
@@ -163,7 +174,7 @@ function mostrarPontoPoligonoNele(indicePonto) {
 
 //atualiza posicao pontoPoligonoNele
 //é chamado no svg.draggable.js quando arrasta poligono
-function atualizaPontoPoligonoNele(elemento){
+function atualizaPontoPoligonoNele(){
 	mostrarPontosPoligono();
 
 	if(pontoSelecionado == null || typeof pontoSelecionadoVetor == undefined){
@@ -193,4 +204,18 @@ function aplicarPontos(indicePonto) {
 	poligonoSelecionadoSVG.plot(pontos.join(" "));
 
 	mostrarPontoPoligonoNele(indicePonto);
+}
+
+function moverPoligono(poligonoEditar, p){
+	let dados = { poligonoEditar, x:p.x, y:p.y };
+	console.log('p', p);
+	socket.emit('moverPoligono', dados);
+}
+
+function moverPoligonoRetorno(dados){
+	console.log('dados', {x:dados.x, y:dados.y});
+	poligonoEditar = poligonosSVG[dados.poligonoEditar];
+	poligonoEditar.move(dados.x, dados.y);
+	for(var i=0; i<3;i++)
+		poligonoEditar.move(dados.x, dados.y);
 }

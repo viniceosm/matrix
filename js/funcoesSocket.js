@@ -20,3 +20,11 @@ socket.on('criarPontoCurvaPoligono', (dados) => {
 socket.on('criarPontoCurva', (dados) => {
   criarPontoCurva(dados.x, dados.y, dados.nomeEventoMouse, dados.poligonoSelecionadoSVG, dados.idUsuario);
 });
+
+socket.on('pintar', (dados) => {
+  pintar(dados.cor, dados.poligonoSelecionadoSVG);
+});
+
+socket.on('moverPoligono', (dados) => {
+  moverPoligonoRetorno(dados);
+});

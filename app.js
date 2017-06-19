@@ -55,11 +55,19 @@ io.on('connection', (socket)=>{
   socket.on('criarPonto', (dados) =>{
     criarPonto(socket, dados);
   });
+  //Mao livre
   socket.on('criarPontoCurvaPoligono', (dados) =>{
     criarPontoCurvaPoligono(socket, dados);
   });
   socket.on('criarPontoCurva', (dados) =>{
     criarPontoCurva(socket, dados);
+  });
+  //Ferramentas
+  socket.on('pintar', (dados) =>{
+    pintar(socket, dados);
+  });
+  socket.on('moverPoligono', (dados) =>{
+    moverPoligono(socket, dados);
   });
 });
 
@@ -87,6 +95,14 @@ const criarPontoCurva = (socket, dados) => {
   dados.idUsuario = session.idUsuario;
   io.emit('criarPontoCurva', dados);
 }
+
+const pintar = (socket, dados) => {
+  socket.broadcast.emit('pintar', dados);
+}
+
+const moverPoligono = (socket, dados) => {
+  socket.broadcast.emit('moverPoligono', dados);
+};
 
 const conectarUsuario = (req) =>{
   let session = req.session;
