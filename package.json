@@ -4,8 +4,10 @@
   "description": "<h1>Projeto:</h1> \r <h4> O projeto trata-se de um editor de desenhos utilizando a framework SVG.JS, o editor contem apenas uma página onde terá todas as funcionalidades listadas a seguir</h4>\r <h1>O que é SVG?</h1>\r <h5>SVG.js é uma livraria para manipulação e animação de SVG's.\r <br>Com o objetivo de ser leve, rápida e de fácil interpretação, foi a escolha mais viável para o projeto.\r <br>O que o SVG.js faz é nada mais do que usar Javascript para criar e/ou desenhar SVG's dinâmicos dentro do HTML e oferecer a capacidade de manipulá-los, simples assim.\r <br>O SVG.js não possui dependências, é de código aberto e usa a licença MIT.</h5>\r <h1>Funcionalidades:</h1>\r <h5>\r <ul>\r <li>1 - Criar poligono reto</li>\r Você poderá selecionar o local de criação do vetor e com cada clique sera adicionado um novo ponto ao vetor.\r <li>2 - Desenho livre</li>\r Você poderá selecionar o local e fazer um desenho livre.\r <li>4 - Mover poligono</li>\r Você pode mover o polígono para onde quiser.\r <li>5 - Excluir poligono</li>\r Aqui sera a exclusão do poligono que você selecionar.\r <li>6 - Upload de imagem</li>\r Se você quiser vetorizar uma imagem aqui sera feito o upload da imagem para vetorização.\r <li>7 - Colorir poligono</li>\r Ao selecionar um polígono você poderá clicar no menu de cores e selecionar a cor que gostaria de colocar no polígono.\r <li>8 - Reposição de vetores</li>\r Existe um menu em baixo das ferramentas chamados pontos do vetor, onde estão todos os pontos do polígono, e assim você poderá deixar o ponto do poligono maior ou menor.\r </ul>\r </h5>\r <h1>Integrantes:</h1>\r <h5>Diego Lipinski, Dhiego Gonçalves, Maicon Liesenberg, Mateus Gadotti e Vinícius Miiller</h5>",
   "main": "app.js",
   "dependencies": {
+    "cookie-parser": "^1.4.3",
     "ejs": "^2.5.6",
     "express": "^4.15.3",
+    "express-session": "^1.15.3",
     "socketio": "^1.0.0"
   },
   "devDependencies": {},

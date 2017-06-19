@@ -6,7 +6,7 @@ var ferramantaSelecionada;
 var mousePressionado=false;
 var pegarPoligono;
 var pontoSelecionadoVetor;
-
+var poligonosSVG = [];
 
 window.onload = function () {
 	//Eventos elementos click
