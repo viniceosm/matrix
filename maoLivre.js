@@ -3,21 +3,15 @@ function criarPontoCurvaPoligono(x, y){
 	var poligono = svg.path('M '+x+' '+y).fill('none').stroke({
 		width: 1
 	});
-	poligono.node.id = 'poligono_' + ContPoligono;
-	poligono.node.setAttributeNS(null, 'class', 'draggable');
-	poligono.draggable();
-	poligonoSelecionadoSVG = poligono;
-	document.getElementById("camada_pontos").innerHTML = "";
-	
-	document.getElementById(poligono.node.id).addEventListener('click', mostrarPontosPoligono, false);
-	document.getElementById(poligono.node.id).addEventListener('click', function(){
+
+	alteraAtributosGenericosPoligono(poligono, function(){
 		selecionarPoligono(poligono);
-		ferramantaSelecionada = 'mover';
-	},false);
-	ContPoligono++;
+	});
+
+	document.getElementById("camada_pontos").innerHTML = "";
 	ferramantaSelecionada = "criarPontoCurva";
 	mostrarPontosPoligono();
-	
+
 }
 
 //Adiciona ponto com curva de um path
@@ -31,7 +25,7 @@ function criarPontoCurva(x, y, nomeEventoMouse){
 		mostrarPontosPoligono();
 	}else if(nomeEventoMouse=="mouseup"){
 		var ultimoPontoPath = pontosPath[pontosPath.length-1].toString().split(',');
-		
+
 		ultimoPontoPath[1] = x;
 		ultimoPontoPath[2] = y;
 

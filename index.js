@@ -18,6 +18,7 @@ window.onload = function () {
 	document.getElementById('bottonCorParente').addEventListener("click", pintar);
 	document.getElementById('bottonCorParente2').addEventListener("click", pintar2);
 	document.getElementById('textoCores').addEventListener("click", pintar);
+	document.getElementById('criarPreTriangulo').addEventListener("click", criarPreTriangulo);
 
 	$( function() {
 		$( "#ferramentas" ).draggable();
@@ -193,4 +194,17 @@ function aplicarPontos(indicePonto) {
 	poligonoSelecionadoSVG.plot(pontos.join(" "));
 
 	mostrarPontoPoligonoNele(indicePonto);
+}
+
+//Altera atributos que todos os poligonos usam, passando uma função para onclick
+function alteraAtributosGenericosPoligono(poligono, fOnClick){
+	poligono.node.id = 'poligono_' + ContPoligono;
+	poligono.node.setAttributeNS(null, 'class', 'draggable');
+	poligono.draggable();
+	poligonoSelecionadoSVG = poligono;
+	document.getElementById(poligono.node.id).addEventListener('click', mostrarPontosPoligono, false);
+	document.getElementById(poligono.node.id).addEventListener('click', function(){
+		fOnClick();
+	},false);
+	ContPoligono++;
 }
