@@ -19,6 +19,7 @@ window.onload = function () {
 	document.getElementById('bottonCorParente2').addEventListener("click", pintar2);
 	document.getElementById('textoCores').addEventListener("click", pintar);
 	document.getElementById('criarPreTriangulo').addEventListener("click", criarPreTriangulo);
+	document.getElementById('criarPreQuadado').addEventListener("click", criarPreQuadado);
 
 	$( function() {
 		$( "#ferramentas" ).draggable();
