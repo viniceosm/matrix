@@ -20,6 +20,7 @@ window.onload = function () {
 	document.getElementById('textoCores').addEventListener("click", pintar);
 	document.getElementById('criarPreTriangulo').addEventListener("click", criarPreTriangulo);
 	document.getElementById('criarPreQuadado').addEventListener("click", criarPreQuadado);
+	document.getElementById('adicionarPonto').addEventListener("click", funcaoAdicionaPonto);
 
 	$( function() {
 		$( "#ferramentas" ).draggable();
@@ -102,6 +103,11 @@ function funcaoCriarPontoCurvaPoligono(){
 function funcaoCarregaImagem(){
 	//simula o click do input type="file"
 	document.getElementById('btnCarregarImagem').click();
+}
+function funcaoAdicionaPonto(){
+	if(poligonoSelecionadoSVG != null){
+		ferramantaSelecionada = "criarPonto";
+	}
 }
 function selecionarPoligono(event){
 	poligonoSelecionadoSVG = event;
