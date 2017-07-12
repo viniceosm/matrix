@@ -101,7 +101,7 @@ body{
 	color: black;
 }
 #cores{
-	background-color:brown;
+	background-color:grey;
 	width: 100px;
 	overflow:hidden;
 	margin-top: 25px;
@@ -109,6 +109,7 @@ body{
 	z-index: 2;
 	right: 0;
 	min-height: 80px;
+	padding: 4px;
 }
 #textoCores{
 	background-color:black;
