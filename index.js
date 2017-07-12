@@ -17,7 +17,8 @@ window.onload = function () {
 	document.getElementById('carregarImagem').addEventListener("click", funcaoCarregaImagem);
 	document.getElementById('bottonCorParente').addEventListener("click", pintar);
 	document.getElementById('bottonCorParente2').addEventListener("click", pintar2);
-	document.getElementById('textoCores').addEventListener("click", pintar);
+	document.getElementById('btnPintarFundo').addEventListener("click", pintar);
+	document.getElementById('btnPintarContorno').addEventListener("click", pintarContorno);
 	document.getElementById('criarPreTriangulo').addEventListener("click", criarPreTriangulo);
 	document.getElementById('criarPreQuadado').addEventListener("click", criarPreQuadado);
 	document.getElementById('adicionarPonto').addEventListener("click", funcaoAdicionaPonto);
@@ -75,8 +76,12 @@ function deletar(){
 }
 
 function pintar(){
-	poligonoSelecionado.style.color = (this.style.backgroundColor);
-	poligonoSelecionadoSVG.fill(this.style.backgroundColor);
+	poligonoSelecionado.style.color = (document.getElementById('textoCores').style.backgroundColor);
+	poligonoSelecionadoSVG.fill(document.getElementById('textoCores').style.backgroundColor);
+}
+
+function pintarContorno(){
+	poligonoSelecionadoSVG.stroke(document.getElementById('textoCores').style.backgroundColor);
 }
 
 function pintar2(){

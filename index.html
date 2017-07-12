@@ -41,12 +41,15 @@
 			<div id="camada_pontos"></div>
 		</div>
 		<div id="cores" class="ui-widget-content">
-				<div id="textoCores" class = "botaoA" style="text-align:center">
-
-				</div>
+				<button id="textoCores" class="jscolor {valueElement:'chosen-value', onFineChange:'setTextColor(this)'}">
+					Escolher cor
+				</button>
 				<div id="divCores">
-					<button class="jscolor {valueElement:'chosen-value', onFineChange:'setTextColor(this)'}">
-						Escolha a cor
+					<button id="btnPintarFundo">
+						Pintar o fundo
+					</button>
+					<button id="btnPintarContorno">
+						Pintar o contorno
 					</button>
 
 					<div id="bottonCorParente" class = "coresSubParente" style= "background-color:transparent"  ></div>
