@@ -7,7 +7,7 @@ var mousePressionado=false;
 var pegarPoligono;
 var pontoSelecionadoVetor;
 
-
+//testando git
 window.onload = function () {
 	//Eventos elementos click
 	document.getElementById('criarPontoPoligono').addEventListener("click", funcaoCriarPontoPoligono);
